@@ -1,8 +1,9 @@
+'use client'
 import { Span } from 'next/dist/trace';
 import React from 'react'
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-
+import { signIn } from 'next-auth/react';
 const SignInBtn = () => {
   return (
     <>
@@ -11,14 +12,14 @@ const SignInBtn = () => {
     <button className='flex items-center  border  
     rounded-full  p-4 gap-4 hover:bg-slate-100/40 transition '>
     <span >
-   <FaGithub style={{ width: '30px', height: '30px' }} /> 
+   <FaGithub  onClick={()=>signIn('github')} style={{ width: '30px', height: '30px' }} /> 
     </span>
     Sign in With Github
     </button>
     <button className='flex items-center  border  rounded-full  
     p-4 gap-4 hover:bg-slate-100/40 transition '>
     <span >
-   <FcGoogle style={{ width: '30px', height: '30px' }} /> 
+   <FcGoogle onClick={()=>signIn('google')}  style={{ width: '30px', height: '30px' }} /> 
     </span>
     Sign in With Google
     </button>

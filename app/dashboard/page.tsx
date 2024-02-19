@@ -2,8 +2,13 @@ import postsData from '@/data'
 import React from 'react'
 import Posts from '../conponents/posts'
 import Link from 'next/link'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '../api/auth/[...nextauth]/route'
+import { redirect } from 'next/navigation'
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+  const session=await  getServerSession(authOptions)
+  if(!session) redirect('/sign-in')
   return (
     <div className='py-6'>
       <h1 className='text-center font-bold text-2xl mt-9'>My posts</h1>
